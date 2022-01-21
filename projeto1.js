@@ -1,5 +1,3 @@
-
-
 const prompt = require("prompt-sync")(); // COMANDO PARA DEFINIR O PROMPT
 
 
