@@ -26,7 +26,7 @@ console.log(`É um prazer conhece-lo, Capitão ${nome}, vamos iniciar sua jornad
 console.log();
 
 
-let x = 0 // VARIÁVEL QUE CONTARÁ OS NUMEROS DE ZEROS
+let x = 0 // VARIÁVEL QUE CONTARÁ OS NUMEROS DE SIM
 
 
 // PERGUNTA 1 
