@@ -6,13 +6,14 @@ let senha = 2004
 
 let senha2 = 'oi'
 
-while (senha2 != senha ) {senha2 = +prompt('Diga a senha :')
+while (senha2 != senha ) {senha2 = +prompt('Diga a senha de 4 dígitos: ');
 
-console.log()
+console.log();
 
-if (senha2 != senha) {console.log('Senha errada, Digite novamente')}
+if (senha2 != senha) {console.clear(); 
+    console.log('Senha errada, Digite novamente')};
 
-console.log()
+console.log();
 
 };
 
