@@ -8,7 +8,11 @@ let senha2 = 'oi'
 
 while (senha2 != senha ) {senha2 = +prompt('Diga a senha :')
 
+console.log()
 
+if (senha2 != senha) {console.log('Senha errada, Digite novamente')}
+
+console.log()
 
 };
 
