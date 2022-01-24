@@ -23,3 +23,10 @@ console.log('Parabéns, você digitou a senha correta');
 
 console.log();
 
+let x = 0
+
+while (x < 5) {
+
+    console.log('x é menor que 5');
+    x++
+}
