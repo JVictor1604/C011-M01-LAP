@@ -23,10 +23,35 @@ console.log('Parabéns, você digitou a senha correta');
 
 console.log();
 
-let x = 0
+let x = 0;
 
-while (x < 5) {
+let tentativas = 0
 
-    console.log('x é menor que 5');
-    x++
+let senhar;
+
+do {senhar = +prompt('Digite sua senha de 6 dígitos: ')
+
+
+   if (senhar != 200516) {
+
+   console.log(); 
+   console.log('Senha errada');
+   console.log();
+   tentativas++;
+   
 }
+
+
+   if (tentativas == 5) {console.log('Você atingiu o limite de tentativas')};
+
+   console.log();
+
+   if (tentativas == 5) {
+    break; 
+}
+
+
+
+} while (senhar != 200516);
+
+
