@@ -29,16 +29,16 @@ console.clear();
 let vezes = 0;
 let numeros = [];
 let resposta = 0;
-let id = 0
+let id = 1
 let par = []
 let impar = []
 
 while (vezes < 20) {
-   resposta = +prompt('Digite um número: ');
+   resposta = +prompt(`Digite o ${id}º número: `);
    console.log();
    numeros.push(resposta); 
    
-   if (numeros[id] % 2 == 0) { 
+   if (resposta % 2 == 0) { 
 
     par.push(resposta)} else {impar.push(resposta)}
    
@@ -47,12 +47,13 @@ while (vezes < 20) {
    id++
 };
 
-console.log(numeros);
+console.log(
+   `Os números totais são ${numeros}`);
 
 console.log();
 
-console.log(par);
+console.log(`os números pares são ${par}`);
 
 console.log();
 
-console.log(impar);
+console.log(`Os números ímpares são ${impar}`);
