@@ -30,7 +30,7 @@ do {
 
   console.log(`Olá ${nome}, bem-vindo ao jogo do Yu Gi Oh. Primeiro, vamos iniciar com as instruções: 
 
-                              -----Instruções-----
+                                     -----Instruções-----
 
   Você deve escolher o número de rodadas que deseja jogar, ao final das rodadas você saberá em quantas rodadas você venceu. Depois você deve escolher um dos três tipos de cartas abaixo: 
 
@@ -111,15 +111,15 @@ do {
         rp == cartas[2] && pc == cartas[1]
     ) {
       console.log(`${rp} vence cartas de ${pc}, Parabéns, Você venceu a rodada!!`)
-      vrp++
+      vrp++;
     }
     
     else if (pc == cartas[0] && rp == cartas[2] ||
              pc == cartas[1] && rp == cartas[0] ||
              pc == cartas[2] && rp == cartas[1]
              ) {
-      console.log(`${rp} perde para cartas de ${pc}, Infelizmente você perdeu....`);
-      vpc++
+      console.log(`${rp} perde para cartas de ${pc}, Infelizmente você perdeu a rodada....`);
+      vpc++;
     }
 
     else {
@@ -153,14 +153,14 @@ do {
   console.log();
 
   if (vrp > vpc) {
-    console.log(`${nome}... Parabéns!!!, Você Venceu o jogo`);
+    console.log(`EXODIA, OBLITERARRRRR Parabéns ${nome}, você venceu o jogo e provou seu poder no reino dos duelistas`);
   }
 
   else if (vpc > vrp) {
-    console.log(`Fim de jogo ${nome} Infelizmente Você perdeu o jogo`)
+    console.log(`AHHHHH NÃO, UMA FORÇA ESPELHO!!!! Infelizmente Você perdeu o jogo ${nome}, mas não desista, você têm muito a provar no reino dos duelistas `)
   }
 
-  else { console.log(`fim de jogo ${nome}... O resultado foi empate, ninguém venceu o jogo`)};
+  else { console.log(`EMPATEEEEE fim de jogo ${nome}... O resultado foi empate, ninguém venceu o jogo`)};
 
   console.log();
 
