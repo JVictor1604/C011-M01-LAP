@@ -1,116 +1,176 @@
 const prompt = require("prompt-sync")();
 console.clear();
+let jn; // COMANDO QUE REPETIRÁ O JOGO
 
 // INÍCIO DO JOGO
 
-console.log('Vamos jogar pedra, papel e tesoura?? Digite sim para iniciar ');
+do {
 
-console.log();
+  console.log('Você está pronto para jogar Yu Gi OH?? Se sim, digite seu nome para iniciar... ');
 
-let iniciar = prompt('Digite sua resposta: ').toLocaleLowerCase(); // COMANDO PARA INICIAR O JOGO
+  console.log();
 
-while (iniciar != 'sim') { 
+  let nome = prompt('Digite seu nome: '); // NOME DO JOGADOR
 
-    console.log();
-    
-    iniciar = prompt('Você não comecou o jogo, digite novamente sua resposta: ').toLocaleLowerCase();
-}
+  while (!isNaN(nome)) {
+        
+        console.log();
+        console.log('Nome inválido, digite letras para validar');
+        console.log();
+        nome = prompt('Digite seu nome: ');
+  };
 
+  const cartas = ['monstro', 'magia', 'armadilha']; // ARRAY DE CARTAS
 
-let elemento = ['pedra','papel','tesoura']; // ARRAY DE ELEMENTOS
+  console.clear();
 
-console.clear();
+  console.log();
 
-// INSTRUÇÕES DO JOGO
+  // INSTRUÇÕES DO JOGO
 
-console.log(`Primeiro, vamos iniciar com as instruções: 
+  console.log(`Olá ${nome}, bem-vindo ao jogo do Yu Gi Oh. Primeiro, vamos iniciar com as instruções: 
 
-Você deve escolher o número de rodadas de deseja jogar, ao final das rodadas você saberá em quantas rodadas você venceu. Depois você deve escolher um dos três elementos abaixo: 
+                              -----Instruções-----
 
-${elemento}
+  Você deve escolher o número de rodadas que deseja jogar, ao final das rodadas você saberá em quantas rodadas você venceu. Depois você deve escolher um dos três tipos de cartas abaixo: 
+
+  ${cartas}
  
-após escolher, você deve digitar o nome do elemento quando for perguntado. Você jogará contra a máquina que também escolherá um elemento aleatoriamente. De acordo com seu elemento e o elemento escolhido pelo computador, você vence ou perde o jogo. 
-Lembrando que: pedra vence tesoura mas perde para papel, papel vence pedra mas perde para tesoura, tesoura vence papel mas perde para pedra, e caso ambos escolham elementos iguais será empate...
+  Cada tipo de carta interage de modo diferente com outro, fazendo você ganhar ou perder o jogo.
 
-Para cada vitória sua você receberá um ponto, a máquina receberá a mesma quantidade a cada vitória dela. Caso o resultado seja empate, os dois pontuam 1(um) ponto...
+  Após escolher, você deve digitar o tipo da carta. Você jogará contra o computador que também escolherá uma carta. 
 
-então é isso, começe o jogo e Boa Sorte!!`);
 
-let rodadas = 0; // NÚMERO DE RODADAS
-let cr = 1; // CONTADOR DE RODADAS JOGADAS
-let vrp = 0; // VITÓRIAS DO USUÁRIO
-let vpc = 0; // VITÓRIAS DA MÁQUINA
+  O jogo segue as sequintes regras: cartas do tipo monstro vencem cartas de armadilha, mas perdem para cartas de magia; cartas de magia vencem cartas de monstro mas perdem para cartas de armadilha; cartas de armadilha vencem cartas de magia, mas perdem para cartas de monstro, e caso ambos escolham cartas iguais será empate...
 
-console.log();
+  Para cada vitória sua você receberá um ponto, a máquina receberá a mesma quantidade a cada vitória dela. Caso o resultado seja empate, nenhum dos dois pontuam...
 
-rodadas = +prompt('Digite o número, entre 1 e 100, de rodadas que você deseja jogar: ');
+  então é isso, que começem os jogos e Boa Sorte!!`);
 
-console.log();
 
-while (rodadas > 100 || rodadas <= 0) {
+  let vrp = 0; // VITÓRIAS DO USUÁRIO
+  let vpc = 0; // VITÓRIAS DA MÁQUINA
+  let ep = 0; // EMPATES
+  
+
+  console.log();
+
+  let rodadas = +prompt('Digite o número, entre 1 e 100, de rodadas que você deseja jogar: ');
+
+  while(rodadas <= 0 || rodadas > 100) {
+      
     
-    rodadas = +prompt('Número inválido, Digite o número de rodadas que deseja jogar: ')
-}
-
-while (cr <= rodadas) {
-
-  console.log();
-
-  let rp = prompt('Escolha um elemento: ').toLocaleLowerCase();
-
-  while (rp != elemento[0] && rp != elemento[1] && rp != elemento[2]) {
-
     console.log();
-    console.log('Digite uma resposta válida, lembre-se de digitar pedra, papel ou tesoura');
+    console.log('Erro, digite um número entre 1 e 100');
     console.log();
-    rp = prompt('Escolha um elemento: ').toLocaleLowerCase();
+    rodadas = +prompt('Digite o número de rodadas que você deseja jogar: ');
+  };
+  
+  while (isNaN(rodadas)) {
+        
     console.log();
-}
-
-  let pc = elemento[Math.floor(Math.random()*3)]
-
-  console.log();
-
-  console.log
-
-  console.log(`Você escolheu ${rp}`);
-
-  console.log();
-
-  console.log(`O computador escolheu ${pc}`);
-
-  console.log();
-
-  if (rp == 'papel' && pc == 'pedra' ||
-      rp == 'pedra' && pc == 'tesoura'||
-      rp == 'tesoura' && pc == 'papel'
-) 
-    {console.log(`${rp} vence ${pc}, Parabéns, Você venceu!!`)
-    vrp++ 
-    };
-
-  if (pc == 'papel' && rp == 'pedra' ||
-      pc == 'pedra' && rp == 'tesoura'||
-      pc == 'tesoura' && rp == 'papel'
-) {
-    console.log(`${rp} perde para ${pc}, Infelizmente você perdeu....`);
-    vpc++}
-
-  if (pc == rp) 
-    {console.log(`${rp} é igual a ${pc}, deu empate`)
-     vrp++; vpc++;
+    console.log('Número inválido, digite apenas números para validar');
+    console.log();
+    rodadas = +prompt('Digite o número, entre 1 e 100, de rodadas que você deseja jogar: ');
 };
 
-    cr++;
-    
+  for (let i = 1; i <= rodadas; i++) {
+
     console.log();
 
-    if (cr <= rodadas) {console.log('Vamos para uma nova rodada')}
+    console.log('----VAMOS A BATALHA----')
 
-  console.log();};
+    console.log();
 
-  console.log(vrp);
+    let rp = prompt('Escolha um tipo de carta: ').toLocaleLowerCase();
+
+    while (rp != cartas[0] && rp != cartas[1] && rp != cartas[2]) {
+
+      console.clear();
+      console.log();
+      console.log('Digite uma resposta válida, lembre-se de digitar monstro, magia ou armadilha');
+      console.log();
+      rp = prompt('Escolha um tipo de carta: ').toLocaleLowerCase();
+      console.log();
+    };
+
+    let pc = cartas[Math.floor(Math.random() * 3)];
+
+    console.log();
+
+    console.log(`Você escolheu uma carta do tipo ${rp}`);
+
+    console.log();
+
+    console.log(`O computador escolheu uma carta do tipo ${pc}`);
+
+    console.log();
+
+    if (rp == cartas[0] && pc == cartas[2] ||
+        rp ==  cartas[1] && pc == cartas[0] ||
+        rp == cartas[2] && pc == cartas[1]
+    ) {
+      console.log(`${rp} vence cartas de ${pc}, Parabéns, Você venceu a rodada!!`)
+      vrp++
+    }
+    
+    else if (pc == cartas[0] && rp == cartas[2] ||
+             pc == cartas[1] && rp == cartas[0] ||
+             pc == cartas[2] && rp == cartas[1]
+             ) {
+      console.log(`${rp} perde para cartas de ${pc}, Infelizmente você perdeu....`);
+      vpc++
+    }
+
+    else {
+      console.log(`cartas de ${rp} são iguais a cartas de ${pc}, nínguem venceu na rodada`)
+      ep++;
+    };     
+
+    console.log();
+
+    if (i < rodadas) {
+      console.log('Vamos para uma nova rodada');}
+
+      else if (i == rodadas) {
+      prompt('Acabaram as rodadas, pressione enter para continuar ')}
+    
+    }
+  
+  console.log();
+
+  console.log(`Acabou a jogo, foram jogadas ${rodadas} Rodada(s).
+
+        TABELA DE RESULTADOS
+
+  ----Você venceu ${vrp} Rodada(s)----
+  
+  ----A máquina venceu ${vpc} Rodada(s)----
+  
+  ----Houveram ${ep} empate(s)----`
+  );
 
   console.log();
 
-  console.log(vpc);
+  if (vrp > vpc) {
+    console.log(`${nome}... Parabéns!!!, Você Venceu o jogo`);
+  }
+
+  else if (vpc > vrp) {
+    console.log(`Fim de jogo ${nome} Infelizmente Você perdeu o jogo`)
+  }
+
+  else { console.log(`fim de jogo ${nome}... O resultado foi empate, ninguém venceu o jogo`)};
+
+  console.log();
+
+  jn = prompt('O jogo acabou, obrigado por ter jogado!! Deseja jogar novamente? ').toLocaleLowerCase();
+
+  console.log();
+
+  console.clear();
+}
+while (jn == 'sim' || jn == 's');
+
+
+

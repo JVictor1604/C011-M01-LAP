@@ -129,15 +129,13 @@ console.log();
 
 // RESULTADO DA HISTÓRIA
 
-if (x == 0) {console.log('Seu bando foi muito mal na batalha, você fracassou miseravelmente, seu barco foi perdido e sua tripulação lhe abandonou, agora você está perdido em busca de abrigo em novos bandos piratas enquanto tenta não morrer de fome e sede em uma ilha deserta.....')};
+if (x == 0) {console.log('Seu bando foi muito mal na batalha, você fracassou miseravelmente, seu barco foi perdido e sua tripulação lhe abandonou, agora você está perdido em busca de abrigo em novos bandos piratas enquanto tenta não morrer de fome e sede em uma ilha deserta.....')} else if (x == 1 || x == 2) {console.log('Depois de uma dura batalha, sua tripulação foi derrotada. Você falhou, mas ainda assim conseguiu avistar um navio pirata amigo que te deu abrigo longe daquela tenebrosa ilha. Mesmo com todos os danos e sem sua tripulação, você saiu no lucro por não ter morrido.....')}
 
-if (x == 1 || x == 2) {console.log('Depois de uma dura batalha, sua tripulação foi derrotada. Você falhou, mas ainda assim conseguiu avistar um navio pirata amigo que te deu abrigo longe daquela tenebrosa ilha. Mesmo com todos os danos e sem sua tripulação, você saiu no lucro por não ter morrido.....')};
+else if (x == 3) {console.log('Você junto com seu bando derrotaram boa parte dos piratas, porém, em um momento de descuido, deixou outros piratas roubarem o tesouro e fugirem pelo grande mar. Você não tem como pega-los e a unica coisa que você pode aceitar é que falhou, porém sem danos nem baixas..... ')}
 
-if (x == 3) {console.log('Você junto com seu bando derrotaram boa parte dos piratas, porém, em um momento de descuido, deixou outros piratas roubarem o tesouro e fugirem pelo grande mar. Você não tem como pega-los e a unica coisa que você pode aceitar é que falhou, porém sem danos nem baixas..... ')};
+else if (x == 4) {console.log('Depois de uma dura batalha, seus piratas triunfaram sobre os adversários e você consegue o tesouro, porém não de maneira perfeita já que boa parte do tesouro se perdeu nos mares após a grande batalha..... ')}
 
-if (x == 4) {console.log('Depois de uma dura batalha, seus piratas triunfaram sobre os adversários e você consegue o tesouro, porém não de maneira perfeita já que boa parte do tesouro se perdeu nos mares após a grande batalha..... ')};
-
-if (x == 5) {console.log('Durante a batalha você não encontra nenhum problema, seus piratas triunfam de maneira inquestionável conquistando todo o tesouro além de novos barcos roubados de outros piratas.... VOCÊ VENCEUUUU......')};
+else if (x == 5) {console.log('Durante a batalha você não encontra nenhum problema, seus piratas triunfam de maneira inquestionável conquistando todo o tesouro além de novos barcos roubados de outros piratas.... VOCÊ VENCEUUUU......')};
 
 console.log();
 
