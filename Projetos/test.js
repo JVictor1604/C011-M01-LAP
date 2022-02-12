@@ -30,11 +30,13 @@ console.clear();
 // validar(...array);
 
 
-let lista =  ['Jose',"Victor","Pedro"]
+// let lista =  ['Jose',"Victor","Pedro"]
 
-function nome (name){
+// function nome (name){
 
- console.log(name);
-}
+//  console.log(name);
+// }
 
-lista.forEach(nome);
+// lista.forEach(nome);
+
+console.log(Math.floor(Math.random() * 3));

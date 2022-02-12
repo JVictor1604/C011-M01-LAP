@@ -30,42 +30,34 @@ let tempo = {
 
   passarTempo: function (a) {
     this.hora = this.hora + a;
-
   },
 };
 
 // INVENTÁRIO
 
 let inventario = [
-
-  {alimento: 'Sopa', qtd: 2},
-  {alimento: 'Estrogonofre', qtd: 3},
-  {alimento: 'Peixe Frito', qtd: 2},
-  {remedio: 'Analgésico', qtd: 1},
-  {remedio: 'Antídoto', qtd: 1},
-  {remedio: 'Vacina', qtd: 1},
+  { alimento: "Sopa", qtd: 2 },
+  { alimento: "Estrogonofre", qtd: 3 },
+  { alimento: "Peixe Frito", qtd: 2 },
+  { remedio: "Analgésico", qtd: 1 },
+  { remedio: "Antídoto", qtd: 1 },
+  { remedio: "Vacina", qtd: 1 },
 ];
 
 function verInventário() {
-
   console.log(`
   
   Aqui está seu inventário:
   
-  ${inventario[0].alimento} :${inventario[0].qtd}
-  ${inventario[1].alimento} :${inventario[1].qtd}
-  ${inventario[2].alimento} :${inventario[2].qtd}
-  ${inventario[3].remedio} :${inventario[3].qtd}
-  ${inventario[4].remedio} :${inventario[4].qtd}
-  ${inventario[5].remedio} :${inventario[5].qtd}
-
+    SOPA: ${inventario[0].qtd}
+    ESTROGONOFE: ${inventario[1].qtd}
+    PEIXE FRITO: ${inventario[2].qtd}
+    ANALGÉSICO: ${inventario[3].qtd}
+    ANTÍDOTO: ${inventario[4].qtd}
+    VACINA: ${inventario[5].qtd}  
   
-  
-  
-  `)};
-
-
-
+  `);
+}
 
 //STATUS
 
@@ -94,6 +86,14 @@ let status = {
       console.log(`sua saúde diminuiu em ${a}`);
 
       console.log();
+    };
+
+    if (this.saude > 100) {
+      this.saude = 100
+      console.log('Sua saúde está máxima');
+      console.log();
+
+
     }
   },
 
@@ -114,7 +114,7 @@ let status = {
       console.log(`A sua moral diminuiu em ${a}`);
 
       console.log();
-    }
+    };
   },
 
   modificarFome: function (b, a) {
@@ -134,7 +134,14 @@ let status = {
       console.log(`Sua fome diminuiu em ${a}`);
 
       console.log();
-    }
+
+      if(this.fome < 0) {
+        this.fome = 0;
+        console.log('Você está sem fome');
+        console.log();
+
+      };
+    };
   },
 
   aumentarNivel: function (a) {
@@ -148,14 +155,14 @@ let status = {
       this.exp = this.exp - 15;
       this.nivel++;
       console.log();
-      console.log('Seu nível aumentou')
+      console.log("Seu nível aumentou");
       console.log();
     }
 
     console.log();
   },
 
-  modificarDinheiro: function (b,a) {
+  modificarDinheiro: function (b, a) {
     if (b == 1) {
       this.dinheiro = this.dinheiro + a;
 
@@ -175,8 +182,8 @@ let status = {
     }
   },
 
-  verStatus: function() {
-   console.log(`
+  verStatus: function () {
+    console.log(`
     
     Seus status são:
     ╔════════════
@@ -188,8 +195,8 @@ let status = {
     ║ dinheiro = ${this.dinheiro}                
     ╚════════════
  
- `)
-  }
+ `);
+  },
 };
 //FUNÇÕES SECUNDÁRIAS
 
@@ -204,6 +211,8 @@ function comer() {
     1 - SOPA          tempo de preparo = 1 horas
     2 - ESTROGONOFE   tempo de preparo = 2 horas
     3 - PEIXE FRITO   tempo de preparo = 3 horas
+
+    Digite 4 para voltar
     
     Lembrando que uma refeição mais completa diminuirá mais sua fome, porém gastará mais tempo...
     
@@ -214,7 +223,6 @@ function comer() {
     ${inventario[2].alimento}  ${inventario[2].qtd}
     
     `
-
   );
 
   console.log();
@@ -223,8 +231,8 @@ function comer() {
 
   console.log();
 
-  while (cm != 1 && cm != 2 && cm != 3) {
-    console.log("Valor inválido, digite 1,2 ou 3");
+  while (cm != 1 && cm != 2 && cm != 3 && cm != 4) {
+    console.log("Valor inválido, digite um valor entre 1 e 4");
     console.log();
     cm = +prompt("Digite o número de sua refeição: ");
     console.log();
@@ -235,120 +243,157 @@ function comer() {
       "Você comeu uma sopa, ela estava um pouco fria mas não é de se reclamar."
     );
     inventario[0].qtd -= 1;
-    status.modificarFome(2,10);
+    status.modificarFome(2, 10);
     tempo.passarTempo(1);
-
   } else if (cm == 2 && inventario[1].qtd > 0) {
-    console.log(
-      "Você fez um belo estrogonofre de frango."
-    ),
-    inventario[1].qtd -= 1;
-    status.modificarFome(2,20);
+    console.log("Você fez um belo estrogonofre de frango."),
+      (inventario[1].qtd -= 1);
+    status.modificarFome(2, 20);
     tempo.passarTempo(2);
-
   } else if (cm == 3 && inventario[2].qtd > 0) {
-    console.log(
-      "Você comeu um magnífico peixe frito."
-    ),
-    inventario[2].qtd -= 1;
-      status.modificarFome(2,30),
-      tempo.passarTempo(3);
-  }  else {console.log(`Você não tem mais ${inventario[cm - 1].alimento}`)}
+    console.log("Você comeu um magnífico peixe frito."),
+      (inventario[2].qtd -= 1);
+    status.modificarFome(2, 30), tempo.passarTempo(3);
+  } else if(cm == 4) {
+
+    console.log('Você voltou a página principal');
+
+  } else {
+    console.log(`Você não tem mais ${inventario[cm - 1].alimento}`);
+  }
 
   console.log();
   console.log(`Sua fome agora é: ${status.fome}`);
   console.log();
 }
 
-
 function trabalhar() {
   console.log();
-  
+
   console.log(
     "----Você chega na sala de enfermaria, vários soldados feridos esperam seu atendimento----"
   );
 
-  let numAtendimentos = 0;
-
   console.log();
 
-  while (numAtendimentos != 1 && numAtendimentos != 2) {
-    if (status.moral > 50) {
-      console.log(
-        "Sua moral está alta, você pode fazer até dois atendimentos por hoje. "
-      );
+  console.log(
+    "Quantos atendimentos você deseja realizar? Você pode realizar até 3 por vez"
+  );
 
-      console.log();
+  let numAtendimentos = +prompt("Digite sua resposta: ");
 
-      numAtendimentos = +prompt(
-        "Digite o número de atendimentos que deseja realizar: "
-      );
-    } else {
-      "Sua moral está baixa, você só poderá atender um paciente hoje",
-        (numAtendimentos = 1);
-    }
+  atendimentos: for (let i = 0; i < numAtendimentos; i++) {
     console.log();
 
-    while (numAtendimentos != 1 && numAtendimentos != 2) {
-      console.log("Número inválido, Digite 1 ou 2...");
-      console.log();
-      numAtendimentos = +prompt(
-        "Digite o número de atendimentos que deseja realizar: "
-      );
-    }
+    let eficiencia = Math.floor(Math.random() * 2);
 
     console.log();
+    console.log("----Atendimento----");
+    console.log();
 
-    for (i = 0; i < numAtendimentos; i++) {
-      numAle = Math.floor(Math.random() * 6);
+    console.log(`Estamos em tempo de guerra, não temos tempo para fazer exames ou diagnósticos, escolha um método para tratar o paciente: 
         
-        console.log();
-        console.log('----Atendimento----');
-        console.log();
+          1 - ANALGÉSICO  QUANTIDADE: ${inventario[3].qtd}
+          2 - ANTÍDOTO    QUANTIDADE: ${inventario[4].qtd}
+          3 - VACINA      QUANTIDADE: ${inventario[5].qtd}
+          
 
-      if (numAle == 1) {
-        console.log("Você estava nervosa e seu atendimento não foi bom, o soldado continua ferido mas a longo prazo se recuperará");
+          Digite 4 para voltar
+      
+        `);
+
+    console.log();
+
+    let rp = +prompt("Digite sua resposta: ");
+
+    console.log();
+
+    while (rp != 1 && rp != 2 && rp != 3 && rp != 4) {
+      console.log("Número inválido, Digite um número inteiro de 1 a 4");
+
+      console.log();
+
+      rp = +prompt("Digite sua resposta: ");
+
+      console.log();
+    }
+
+    console.log();
+
+    if (rp == 1) {
+      inventario[3].qtd--;
+      console.log();
+      console.log("Você usou um Analgésico");
+      console.log();
+      remedio = inventario[3].remedio;
+    } else if (rp == 2) {
+      inventario[4].qtd--;
+      console.log();
+      console.log("Você usou um Antídoto");
+      console.log();
+      remedio = inventario[4].remedio;
+    } else if (rp == 3) {
+      inventario[5].qtd--;
+      console.log();
+      console.log("Você usou um Analgésico");
+      console.log();
+      remedio = inventario[5].remedio;
+    } else {
+      console.log();
+      console.log("Você voltou para página principal");
+      console.log();
+    }
+
+    if (rp == 1 || rp == 2 || rp == 3) {
+      if (status.moral / 50 + eficiencia <= 1) {
+        console.log(
+          `Você usou ${remedio} e infelizmente não foi efetivo, o paciente reagiu mal a medicação e se dirigiu para outro posto de atendimento`
+        );
+        console.log();
         tempo.passarTempo(2);
         status.aumentarNivel(2);
-        status.modificarFome(1,10);
-        status.modificarDinheiro(1,5);
-        status.modificarMoral(2,20);
-      } else if (numAle >= 3 && numAle < 5) {
+        status.modificarFome(1, 10);
+        status.modificarDinheiro(1, 5);
+        status.modificarMoral(2, 15);
+      } else if (status.moral / 50 + eficiencia <= 2) {
         console.log(
-          "Foi um atendimento normal, apesar das tensões e da sua proecupação o paciente está se recuperando e logo estará de volta em sua casa"
+          `Você usou ${remedio} e infelizmente não foi muito efetivo, porém o paciente está se recuperando aos poucos e logo ficará melhor`
         );
+        console.log();
         tempo.passarTempo(2);
         status.aumentarNivel(5);
-        status.modificarFome(1,5);
-        status.modificarDinheiro(1,10);
-        status.modificarMoral(1,5)
-      } else {
+        status.modificarFome(1, 5);
+        status.modificarDinheiro(1, 10);
+        status.modificarMoral(1, 5);
+      } else if (status.moral / 50 + eficiencia <= 3) {
         console.log(
-          "Você fez um trabalho excepcional, nem parece que estamos aflitos com a frieza e profissionalidade que você trabalhou "
+          `Você usou ${remedio} foi muito efetivo, o paciente em poucas horas reagiu muito bem e não irá demorar até que sua recuperação seja total`
         );
+        console.log();
         tempo.passarTempo(2);
         status.aumentarNivel(10);
-        status.modificarFome(1,3);
-        status.modificarDinheiro(1,15);
-        status.modificarMoral(1,10);
-      };
+        status.modificarFome(1, 3);
+        status.modificarDinheiro(1, 15);
+        status.modificarMoral(1, 10);
 
-      console.log();
+        console.log();
 
-      prompt("Pressione enter para encerrar seu atendimento");
+        prompt("Pressione enter para encerrar seu atendimento");
 
-      console.log();
+        console.log();
 
-      if (numAtendimentos == 2) {
-        console.log("Você irá atender um novo paciente");
+        if (i < numAtendimentos) {
+          console.log("Você irá atender um novo paciente");
+        }
+        console.log();
       }
-      console.log();
-    }
-  }
+    } else {
+      break atendimentos;
+    };
+  };
 };
 
 function loja() {
-
   console.log();
 
   console.log(`Bem-vinda a loja Stalin, O Líder Supremo.... O que você deseja comprar?
@@ -368,83 +413,88 @@ function loja() {
     6 - Vacina - 40 rublos
   
     Glória a União Soviética!! Glória ao Exército Vermelho!! 
-  `)
+  `);
 
-let rp = prompt('Digite o número de sua escolha: ');
+  let rp = +prompt("Digite o número de sua escolha: ");
 
-if (rp == 1 && status.dinheiro >= 10) {
-
-  console.log();
-  console.log('Você comprou ingredientes para sopa, eles foram adicionados ao seu inventário');
-  status.dinheiro -= 10;
-  inventario[0].qtd++;
-  console.log();
-
-
+  if (rp == 1 && status.dinheiro >= 10) {
+    console.log();
+    console.log(
+      "Você comprou ingredientes para sopa, eles foram adicionados ao seu inventário"
+    );
+    status.dinheiro -= 10;
+    inventario[0].qtd++;
+    console.log();
+  } else if (rp == 2 && status.dinheiro >= 20) {
+    console.log();
+    console.log(
+      "Você comprou ingredientes para estrogonofe, eles foram adicionados ao seu inventário"
+    );
+    status.dinheiro -= 20;
+    inventario[1].qtd++;
+    console.log();
+  } else if (rp == 3 && status.dinheiro >= 30) {
+    console.log();
+    console.log(
+      "Você comprou ingredientes para peixe frito, eles foram adicionados ao seu inventário"
+    );
+    status.dinheiro -= 30;
+    inventario[2].qtd++;
+    console.log();
+  } else if (rp == 4 && status.dinheiro >= 15) {
+    console.log();
+    console.log(
+      "Você comprou um analgésico, ele foi adicionado ao seu inventário"
+    );
+    status.dinheiro -= 15;
+    inventario[3].qtd++;
+    console.log();
+  } else if (rp == 5 && status.dinheiro >= 25) {
+    console.log();
+    console.log(
+      "Você comprou um antídoto, ele foi adicionado ao seu inventário"
+    );
+    status.dinheiro -= 25;
+    inventario[4].qtd++;
+    console.log();
+  } else if (rp == 6 && status.dinheiro >= 40) {
+    console.log();
+    console.log(
+      "Você comprou uma vacina, ela foi adicionada ao seu inventário"
+    );
+    status.dinheiro -= 40;
+    inventario[5].qtd++;
+    console.log();
+  } else if (rp < 4) {
+    console.log(
+      `Você não tem dinheiro para comprar ${inventario[rp - 1].alimento}`
+    );
+  } else {
+    console.log(
+      `Você não tem dinheiro para comprar ${inventario[rp - 1].remedio}`
+    );
+  }
 }
 
-else if (rp == 2 && status.dinheiro >= 20) {
-
+function visitarosPrisioneiros() {
   console.log();
-  console.log('Você comprou ingredientes para estrogonofe, eles foram adicionados ao seu inventário');
-  status.dinheiro -= 20;
-  inventario[1].qtd++;
+  console.log("----Você chegou na sala dos prisioneiros de guerra----");
   console.log();
 
+  console.log(`Escolha sua ação:
 
+    1 - ATENDER OS PRISIONEIROS (PERIGO!!)
+    2 - DAR SUA COMIDA (PERIGO!!)
+    3 - CONVERSAR (PERIGO!!)
+  
+  `);
+  let rp = +prompt("Digite o número de sua ação: ");
+
+  if (rp == 1) {
+    console.log();
+    console.log("Você pode ");
+  }
 }
-
-else if (rp == 3 && status.dinheiro >= 30) {
-
-  console.log();
-  console.log('Você comprou ingredientes para peixe frito, eles foram adicionados ao seu inventário');
-  status.dinheiro -= 30;
-  inventario[2].qtd++;
-  console.log();
-
-
-}
-
-else if (rp == 4 && status.dinheiro >= 15) {
-
-  console.log();
-  console.log('Você comprou um analgésico, ele foi adicionado ao seu inventário');
-  status.dinheiro -= 15;
-  inventario[3].qtd++;
-  console.log();
-
-
-}
-
-else if (rp == 5 && status.dinheiro >= 25) {
-
-  console.log();
-  console.log('Você comprou um antídoto, ele foi adicionado ao seu inventário');
-  status.dinheiro -= 25;
-  inventario[4].qtd++;
-  console.log();
-
-
-} 
-
-else if (rp == 6 && status.dinheiro >= 40) {
-
-  console.log();
-  console.log('Você comprou uma vacina, ela foi adicionada ao seu inventário');
-  status.dinheiro -= 40;
-  inventario[5].qtd++;
-  console.log();
-
-
-} 
-
-
-else if (rp < 4) {console.log(`Você não tem dinheiro para comprar ${inventario[rp - 1].alimento}`)}
-
-else {console.log(`Você não tem dinheiro para comprar ${inventario[rp - 1].remedio}`)};
-
-};
-
 
 console.log(
   `29 de Outubro de 1942... O relógio marca ${tempo.hora}:00 da manhã
@@ -487,11 +537,10 @@ prompt("Pressione enter para iniciar a jornada");
 
 console.log();
 
-jogo : for (let i = 0; i < 8; i++) {
-  
+jogo: for (let i = 0; i < 50; i++) {
   console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}.....`);
 
-  dia : while (tempo.hora <= 21) {
+  dia: while (tempo.hora <= 21) {
     console.log();
 
     console.log(`São ${tempo.hora} horas`);
@@ -525,36 +574,28 @@ Escolha sua ação:
     } else if (escolha == 0) {
       break jogo;
     }
-
-  };
-
+  }
 
   console.log();
 
   if (tempo.hora >= 21) {
-      tempo.hora = 9;
+    tempo.hora = 9;
 
-     tempo.dia++;
+    tempo.dia++;
 
-      console.log();
+    console.log();
 
-      console.log('Vamos para um novo dia');
+    console.log("Vamos para um novo dia");
 
-      console.log();
-
-};
-
+    console.log();
+  }
 
   if (tempo.dia > 30) {
-     tempo.dia = 1;
-     let x = 10;
-     tempo.mes = meses[x+1];
+    tempo.dia = 1;
+    let x = 10;
+    tempo.mes = meses[x + 1];
 
-     console.log(
-    `Hoje começa o mês de ${meses[x+1]}`)
+    console.log(`Hoje começa o mês de ${meses[x + 1]}`);
     console.log();
+  }
 };
-  };
-
-
-
