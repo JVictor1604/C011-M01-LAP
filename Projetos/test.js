@@ -39,4 +39,4 @@ console.clear();
 
 // lista.forEach(nome);
 
-console.log(Math.floor(Math.random() * 3));
+console.log(Math.floor(Math.random() * 8));
