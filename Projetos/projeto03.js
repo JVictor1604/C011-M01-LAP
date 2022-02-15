@@ -720,6 +720,7 @@ do {
           );
           status.modificarSaude(2, 20);
           status.modificarMoral(2, 15);
+          tempo.passarTempo(2);
           console.log();
         } else if (num + status.nivel / 2 < 5) {
           console.log();
@@ -728,6 +729,7 @@ do {
           );
           status.modificarSaude(1, 5);
           status.modificarMoral(1, 5);
+          tempo.passarTempo(2);
           receberItem(6);
         } else if (num + status.nivel / 2 < 7) {
           console.log();
@@ -736,6 +738,7 @@ do {
           );
           status.modificarSaude(1, 10);
           status.modificarMoral(1, 10);
+          tempo.passarTempo(2);
           receberItem(1);
         };
       };
@@ -743,7 +746,7 @@ do {
   };
 
   console.log(
-    `29 de Outubro de 1942... O relógio marca ${tempo.hora}:00 da manhã
+    `29 de Dezembro de 1942... O relógio marca ${tempo.hora}:00 da manhã
 
 – Mais um dia de tensão na União Sóviética, o exército nazista avança pelas ruas da tão almejada cidade de Stalingrado, e agora eu preciso lutar contra a morte nesses que podem ser meus últimos dias de vida...
 
@@ -792,7 +795,7 @@ Esses são seus objetivos:
 
   console.log();
 
-  jogo: for (let i = 0; i < 10; i++) {
+  jogo: for (let i = 0; i < 3; i++) {
 
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}.....`);
 
@@ -833,8 +836,6 @@ Escolha sua ação:
         verInventário();
       } else if (escolha == 6) {
         status.verStatus();
-      } else if (escolha == 0) {
-        break jogo;
       };
 
       if (status.saude < 1 || status.moral < 1 || status.fome > +100) {
