@@ -792,7 +792,7 @@ Esses são seus objetivos:
 
   console.log();
 
-  jogo: for (let i = 0; i < 15; i++) {
+  jogo: for (let i = 0; i < 10; i++) {
 
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}.....`);
 
@@ -902,7 +902,6 @@ Escolha sua ação:
   console.log();
 
   recomeçarJogo = prompt("Deseja Jogar novamente? ").toLocaleLowerCase();
-
 
   console.log();
 
