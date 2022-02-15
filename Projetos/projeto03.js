@@ -24,7 +24,7 @@ do {
   let tempo = {
     dia: 29,
 
-    mes: meses[10],
+    mes: meses[12],
 
     ano: 1942,
 
@@ -59,7 +59,7 @@ do {
     VACINA: ${inventario[5].qtd}  
   
   `);
-  }
+  };
 
   //STATUS
 
@@ -88,13 +88,13 @@ do {
         console.log(`sua saúde diminuiu em ${a}`);
 
         console.log();
-      }
+      };
 
       if (this.saude > 100) {
         this.saude = 100;
         console.log("Sua saúde está máxima");
         console.log();
-      }
+      };
     },
 
     modificarMoral: function (b, a) {
@@ -114,13 +114,13 @@ do {
         console.log(`A sua moral diminuiu em ${a}`);
 
         console.log();
-      }
+      };
 
       if (this.moral > 100) {
         this.moral = 100;
         console.log("Sua moral está máxima");
         console.log();
-      }
+      };
     },
 
     modificarFome: function (b, a) {
@@ -145,8 +145,8 @@ do {
           this.fome = 0;
           console.log("Você está sem fome");
           console.log();
-        }
-      }
+        };
+      };
     },
 
     aumentarNivel: function (a) {
@@ -162,7 +162,7 @@ do {
         console.log();
         console.log("Seu nível aumentou");
         console.log();
-      }
+      };
 
       console.log();
     },
@@ -184,7 +184,7 @@ do {
         console.log(`Seu dinheiro diminuiu em ${a} Rublos`);
 
         console.log();
-      }
+      };
     },
 
     verStatus: function () {
@@ -221,10 +221,10 @@ do {
           console.log(
             `Você recebeu um ${inventario[numitem].alimento} pelo seu bom atendimento`
           );
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 
   function serRoubada() {
     let num = Math.floor(Math.random() * 10 + status.moral / 50);
@@ -237,7 +237,7 @@ do {
         x = 20;
       } else {
         x = 10;
-      }
+      };
 
       console.log();
       console.log(
@@ -261,15 +261,15 @@ do {
         x = 30;
       } else {
         x = 20;
-      }
+      };
 
       console.log();
       console.log(
         `Ficar aqui é muito perigoso, Você atingida por uma bomba aérea.`
       );
       status.modificarSaude(2, x);
-    }
-  }
+    };
+  };
 
   function verificarNumero(rp) {
     while (rp != 1 && rp != 2 && rp != 3 && rp != 4) {
@@ -280,12 +280,13 @@ do {
       rp = +prompt("Digite sua resposta: ");
 
       console.log();
-    }
-  }
+    };
+  };
 
   //FUNÇÕES PRINCIPAIS
 
   function comer() {
+   
     console.log();
 
     console.log(
@@ -322,26 +323,30 @@ do {
       );
       inventario[0].qtd -= 1;
       status.modificarFome(2, 10);
+      status.modificarSaude(1, 3);
       tempo.passarTempo(1);
     } else if (cm == 2 && inventario[1].qtd > 0) {
       console.log("Você fez um belo estrogonofre de frango."),
         (inventario[1].qtd -= 1);
       status.modificarFome(2, 20);
+      status.modificarSaude(1, 4);
       tempo.passarTempo(2);
     } else if (cm == 3 && inventario[2].qtd > 0) {
       console.log("Você comeu um magnífico peixe frito."),
         (inventario[2].qtd -= 1);
-      status.modificarFome(2, 30), tempo.passarTempo(3);
+      status.modificarFome(2, 30);
+      tempo.passarTempo(3);
+      status.modificarSaude(1, 5);
     } else if (cm == 4) {
       console.log("Você voltou a página principal");
     } else {
       console.log(`Você não tem mais ${inventario[cm - 1].alimento}`);
-    }
+    };
 
     console.log();
     console.log(`Sua fome agora é: ${status.fome}`);
     console.log();
-  }
+  };
 
   function trabalhar() {
     console.log();
@@ -390,7 +395,7 @@ do {
       if (rp != 4) {
         remedio = inventario[rp + 2].remedio;
         console.log();
-      }
+      };
 
       if (rp == 1 || rp == 2 || rp == 3) {
         while (inventario[rp + 2].qtd < 1) {
@@ -403,8 +408,8 @@ do {
           console.log();
 
           remedio = inventario[rp + 2].remedio;
-        }
-      }
+        };
+      };
 
       if (rp == 1 && inventario[3].qtd > 0) {
         inventario[3].qtd--;
@@ -425,7 +430,7 @@ do {
         console.log();
         console.log("Você voltou para o menu inicial");
         console.log();
-      }
+      };
 
       if (rp == 1 || rp == 2 || rp == 3) {
         if (status.saude / 50 + eficiencia <= 1) {
@@ -468,7 +473,7 @@ do {
             receberItem(6);
           } else if (status.nivel > 10) {
             receberItem(10);
-          }
+          };
 
           console.log();
 
@@ -480,12 +485,12 @@ do {
             console.log("Você irá atender um novo paciente");
           }
           console.log();
-        }
+        };
       } else {
         break atendimentos;
-      }
-    }
-  }
+      };
+    };
+  };
 
   function loja() {
     console.log();
@@ -567,8 +572,8 @@ do {
       console.log(
         `Você não tem dinheiro para comprar ${inventario[rp - 1].remedio}`
       );
-    }
-  }
+    };
+  };
 
   function visitarosPrisioneiros() {
     console.log();
@@ -666,9 +671,9 @@ do {
             status.modificarFome(1, 3);
             status.modificarDinheiro(1, 15);
             status.modificarMoral(1, 10);
-          }
-        }
-      }
+          };
+        };
+      };
     } else if (rp == 2) {
       let num = Math.floor(Math.random() * 3);
 
@@ -704,7 +709,7 @@ do {
           (inventario[2].qtd -= 1);
       } else if (rp == 4) {
         console.log("Você voltou a página principal");
-      }
+      };
 
       if (rp != 4) {
         if (num + status.nivel / 2 < 3) {
@@ -732,10 +737,10 @@ do {
           status.modificarSaude(1, 10);
           status.modificarMoral(1, 10);
           receberItem(1);
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 
   console.log(
     `29 de Outubro de 1942... O relógio marca ${tempo.hora}:00 da manhã
@@ -788,6 +793,7 @@ Esses são seus objetivos:
   console.log();
 
   jogo: for (let i = 0; i < 15; i++) {
+
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}.....`);
 
     dia: while (tempo.hora <= 21) {
@@ -795,7 +801,7 @@ Esses são seus objetivos:
 
       if (status.moral <= 0 || status.fome >= 100 || status.saude <= 0) {
         break jogo;
-      }
+      };
 
       console.log(`São ${tempo.hora} horas`);
 
@@ -829,14 +835,14 @@ Escolha sua ação:
         status.verStatus();
       } else if (escolha == 0) {
         break jogo;
-      }
+      };
 
       if (status.saude < 1 || status.moral < 1 || status.fome > +100) {
         console.log(status.saude, status.moral, status.fome);
 
         break jogo;
-      }
-    }
+      };
+    };
 
     console.log();
 
@@ -850,7 +856,7 @@ Escolha sua ação:
       console.log("Vamos para um novo dia");
 
       console.log();
-    }
+    };
 
     if (tempo.dia > 30) {
       tempo.dia = 1;
@@ -859,8 +865,8 @@ Escolha sua ação:
 
       console.log(`Hoje começa o mês de ${meses[x + 1]}`);
       console.log();
-    }
-  }
+    };
+  };
 
   if (status.saude <= 0) {
     console.log();
@@ -884,9 +890,10 @@ Escolha sua ação:
 
     Você perdeu mas não desista, tente novamente. Glória a União Soviética!!`);
   } else {
-    `Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}..... Glória a União Soviética!!! Está tudo acabado, as tropas Soviéticas avançam em direção ao território Alemão e estamos livres de qualquer ameaça... Seu legado está marcado pelas ruas destroçadas de Stalingrado, seu nome será lembrado por séculos como a enfermeira Soviética de Stalin!!
+    console.log();
+    console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}..... Glória a União Soviética!!! Está tudo acabado, as tropas Soviéticas avançam em direção ao território Alemão e estamos livres de qualquer ameaça... Seu legado está marcado pelas ruas destroçadas de Stalingrado, seu nome será lembrado por séculos como a enfermeira Soviética de Stalin!!
       
-      Você vencer o jogo!! Parabéns!!`;
+      Você vencer o jogo!! Parabéns!!`);
   };
   console.log();
 
@@ -898,4 +905,5 @@ Escolha sua ação:
 
 
   console.log();
+
 } while (recomeçarJogo == "sim" || recomeçarJogo == "s");
