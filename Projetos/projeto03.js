@@ -21,11 +21,13 @@ do {
     "dezembro",
   ];
 
+  let indicedoMes = 12;
+
   let tempo = {
     
     dia: 29,
 
-    mes: meses[12],
+    mes: meses[indicedoMes],
 
     ano: 1942,
 
@@ -253,8 +255,8 @@ do {
       );
       status.modificarDinheiro(2, x);
       console.log();
-    }
-  }
+    };
+  };
 
   function serFerida() {
     
@@ -327,29 +329,39 @@ do {
     verificarNumero(rp);
 
     if (rp == 1 && inventario[0].qtd > 0) {
+
       console.log(
         "Você comeu uma sopa, ela estava um pouco fria mas não é de se reclamar."
       );
       inventario[0].qtd -= 1;
       status.modificarFome(2, 10);
       status.modificarSaude(1, 3);
-      tempo.passarTempo(1);
+      tempo.passarTempo(2);
+
     } else if (rp == 2 && inventario[1].qtd > 0) {
+
       console.log("Você fez um belo estrogonofre de frango."),
         (inventario[1].qtd -= 1);
       status.modificarFome(2, 20);
       status.modificarSaude(1, 4);
-      tempo.passarTempo(2);
+      tempo.passarTempo(3);
+
     } else if (rp == 3 && inventario[2].qtd > 0) {
+
       console.log("Você comeu um magnífico peixe frito."),
         (inventario[2].qtd -= 1);
       status.modificarFome(2, 30);
-      tempo.passarTempo(3);
+      tempo.passarTempo(4);
       status.modificarSaude(1, 5);
+
     } else if (rp == 4) {
+
       console.log("Você voltou a página principal");
+
     } else if (inventario[rp - 1].qtd < 1) {
+
       console.log(`Você não tem mais ${inventario[rp - 1].alimento}`);
+
     };
 
     console.log();
@@ -407,6 +419,7 @@ do {
       };
 
       if (rp == 1 || rp == 2 || rp == 3) {
+
         while (inventario[rp + 2].qtd < 1) {
           console.log(`Você não tem mais ${inventario[rp + 2].remedio}`);
 
@@ -442,47 +455,53 @@ do {
       };
 
       if (rp == 1 || rp == 2 || rp == 3) {
+
         if (status.saude / 50 + eficiencia <= 1) {
           console.log(
             `Você usou ${remedio} e infelizmente não foi efetivo, o paciente reagiu mal a medicação e se dirigiu para outro posto de atendimento`
           );
           console.log();
           serFerida();
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           status.aumentarNivel(2);
           status.modificarFome(1, 10);
           status.modificarDinheiro(1, 5);
           status.modificarMoral(2, 15);
+
         } else if (status.saude / 50 + eficiencia <= 2) {
+
           console.log(
             `Você usou ${remedio} e infelizmente não foi muito efetivo, porém o paciente está se recuperando aos poucos e logo ficará melhor`
           );
           console.log();
           serFerida();
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           status.aumentarNivel(5);
           status.modificarFome(1, 5);
           status.modificarDinheiro(1, 10);
           status.modificarMoral(1, 5);
+
         } else if (status.saude / 50 + eficiencia <= 3) {
+
           console.log(
             `Você usou ${remedio} e foi muito efetivo, o paciente em poucas horas reagiu muito bem e não irá demorar até que sua recuperação seja total`
           );
           console.log();
           serFerida();
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           status.aumentarNivel(10);
           status.modificarFome(1, 3);
           status.modificarDinheiro(1, 15);
           status.modificarMoral(1, 10);
 
           if (status.nivel > 2) {
-            receberItem(4);
+            receberItem(3);
           } else if (status.nivel > 5) {
-            receberItem(6);
+            receberItem(4);
           } else if (status.nivel > 10) {
-            receberItem(10);
+            receberItem(1);
           };
+        };
 
           console.log();
 
@@ -491,10 +510,11 @@ do {
           console.log();
 
           if (i < numAtendimentos) {
+
             console.log("Você irá atender um novo paciente");
           }
           console.log();
-        };
+        
       } else {
         break atendimentos;
       };
@@ -519,72 +539,109 @@ do {
     4 - Analgésico - 15 rublos
     5 - Antídoto - 25 rublos
     6 - Vacina - 40 rublos
+
+    Você tem ${status.dinheiro} rublos
   
     Glória a União Soviética!! Glória ao Exército Vermelho!! 
   `);
 
     let rp = +prompt("Digite o número de sua escolha: ");
 
+    console.log();
+
+    while (rp != 1 && rp != 2 && rp != 3 && rp != 4 && rp != 5 && rp != 6 || isNaN(rp)) {
+      console.log("Número inválido, Digite um número inteiro de 1 a 4");
+
+      console.log();
+
+      rp = +prompt("Digite sua resposta: ");
+
+      console.log();
+    };
+
     if (rp == 1 && status.dinheiro >= 10) {
+
       console.log();
       console.log(
         "Você comprou ingredientes para sopa, eles foram adicionados ao seu inventário"
       );
       status.dinheiro -= 10;
       inventario[0].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp == 2 && status.dinheiro >= 20) {
+
       console.log();
       console.log(
         "Você comprou ingredientes para estrogonofe, eles foram adicionados ao seu inventário"
       );
       status.dinheiro -= 20;
       inventario[1].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp == 3 && status.dinheiro >= 30) {
+
       console.log();
       console.log(
         "Você comprou ingredientes para peixe frito, eles foram adicionados ao seu inventário"
       );
       status.dinheiro -= 30;
       inventario[2].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp == 4 && status.dinheiro >= 15) {
+
       console.log();
       console.log(
         "Você comprou um analgésico, ele foi adicionado ao seu inventário"
       );
       status.dinheiro -= 15;
       inventario[3].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp == 5 && status.dinheiro >= 25) {
+
       console.log();
       console.log(
         "Você comprou um antídoto, ele foi adicionado ao seu inventário"
       );
       status.dinheiro -= 25;
       inventario[4].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp == 6 && status.dinheiro >= 40) {
+
       console.log();
       console.log(
         "Você comprou uma vacina, ela foi adicionada ao seu inventário"
       );
       status.dinheiro -= 40;
       inventario[5].qtd++;
+      tempo.passarTempo(1);
       console.log();
+
     } else if (rp < 4) {
+
       console.log(
         `Você não tem dinheiro para comprar ${inventario[rp - 1].alimento}`
       );
+
     } else {
+
       console.log(
         `Você não tem dinheiro para comprar ${inventario[rp - 1].remedio}`
-      );
+    
+       );
     };
   };
 
   function visitarosPrisioneiros() {
+
     console.log();
     console.log("----Você chegou na sala dos prisioneiros de guerra----");
     console.log();
@@ -630,6 +687,7 @@ do {
     let rp = +prompt("Digite o número de sua ação: ");
 
     if (rp == 1) {
+
       if (rp == 1) {
         console.log();
         console.log(`Você pode atender um paciente, você não usará remédios pois não ha remédios para prisioneiros de guerra, apenas tente ajudar a pessoa correta para não acabar morrendo... escolha um para atender:
@@ -657,37 +715,43 @@ do {
           console.log();
 
           if (status.moral / 50 + sorte <= 1) {
+
             console.log(
               `No momento do atendimento você se descuida e o prisioneiro foge...  Ainda Desferiu um duro golpe contra você que abalou sua moral e te machucou, não se deve confiar em todos prisioneiros...`
             );
             console.log();
-            tempo.passarTempo(2);
+            tempo.passarTempo(3);
             status.aumentarNivel(1);
             status.modificarFome(1, 15);
             status.modificarDinheiro(1, 5);
             status.modificarMoral(2, 10);
             serRoubada();
+
           } else if (status.moral / 50 + sorte <= 2) {
+
             console.log(
               `Você atendeu o prisioneiro, e apesar de não ter sido muito efetivo, você saiu no lucro por não ter tido agredida confiando tanto em..... Nazistas.....`
             );
             console.log();
-            tempo.passarTempo(2);
+            tempo.passarTempo(3);
             status.aumentarNivel(5);
             status.modificarFome(1, 8);
             status.modificarDinheiro(1, 10);
             status.modificarMoral(1, 5);
             serRoubada();
+
           } else if (status.moral / 50 + sorte <= 3) {
+
             console.log(
               `Seu atendimento foi um sucesso, o prisioneiro parecia mais cachorro quieto do que um soldado de guerra, você mostrou qual o verdadeiro valor do povo Soviético`
             );
             console.log();
-            tempo.passarTempo(2);
+            tempo.passarTempo(3);
             status.aumentarNivel(15);
             status.modificarFome(1, 3);
             status.modificarDinheiro(1, 15);
             status.modificarMoral(1, 10);
+
           };
         };
       };
@@ -709,6 +773,7 @@ do {
     3- ${inventario[2].alimento}  ${inventario[2].qtd}
     4- Voltar ao menu principal`);
       console.log();
+
       let rp = +prompt("Digite sua resposta: ");
 
       verificarNumero(rp);
@@ -730,6 +795,7 @@ do {
 
       if (rp != 4) {
         if (num + status.nivel / 2 < 3) {
+
           serRoubada();
           console.log();
           console.log(
@@ -737,26 +803,31 @@ do {
           );
           status.modificarSaude(2, 20);
           status.modificarMoral(2, 15);
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           console.log();
+
         } else if (num + status.nivel / 2 < 5) {
+
           console.log();
           console.log(
             "Sua tentativa foi boa, mas você não sabe se terá algo em troca. Pelo menos seus status aumentaram!!"
           );
           status.modificarSaude(1, 5);
           status.modificarMoral(1, 5);
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           receberItem(6);
+
         } else if (num + status.nivel / 2 < 7) {
+
           console.log();
           console.log(
             "Sua tentativa foi um sucesso, você aumentou seus status e recebeu um item do prisioneiro!!!"
           );
           status.modificarSaude(1, 10);
           status.modificarMoral(1, 10);
-          tempo.passarTempo(2);
+          tempo.passarTempo(3);
           receberItem(1);
+
         };
       };
     };
@@ -877,16 +948,29 @@ Escolha sua ação:
     };
 
     if (tempo.dia > 30) {
+    
       tempo.dia = 1;
-      let x = 10;
-      tempo.mes = meses[x + 1];
+      indicedoMes++;
 
-      console.log(`Hoje começa o mês de ${meses[x + 1]}`);
+      console.log(`Hoje começa o mês de ${meses[indicedoMes]}`);
       console.log();
+
+      if(indicedoMes > 12) {
+
+      indicedoMes = 1;
+      tempo.mes = meses[indicedoMes];
+      tempo.ano++;
+      console.log();
+      console.log(`FELIZZ... ou triste.... Ano novo. Hoje começa o ano de ${tempo.ano}`)
+      console.log();
+
+      };
     };
   };
 
   if (status.saude <= 0) {
+
+
     console.log();
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}..... Após um período tentando sobreviver a todo o caos, você morreu após ser atingida por uma bala... Querida Nina Litvinova Seu legado estará sempre guardado nos destroços de Stalinngrado. Vencemos a guerra, e seu nome figura entre os heróis da nossa nação, Apesar de toda a dor.... seu pai está orgulhoso da filha que teve....
     
@@ -894,6 +978,7 @@ Escolha sua ação:
     `);
 
   } else if (status.fome >= 100) {
+
     console.log();
     console.log(`Dia ${tempo.dia} de ${tempo.mes + 1} de ${
       tempo.ano
@@ -909,6 +994,7 @@ Escolha sua ação:
 
     Você perdeu mas não desista, tente novamente. Glória a União Soviética!!`);
   } else {
+
     console.log();
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}..... Glória a União Soviética!!! Está tudo acabado, as tropas Soviéticas avançam em direção ao território Alemão e estamos livres de qualquer ameaça... Seu legado está marcado pelas ruas destroçadas de Stalingrado, seu nome será lembrado por séculos como a enfermeira Soviética de Stalin!!
       
