@@ -22,6 +22,7 @@ do {
   ];
 
   let tempo = {
+    
     dia: 29,
 
     mes: meses[12],
@@ -38,6 +39,7 @@ do {
   // INVENTÁRIO
 
   let inventario = [
+
     { alimento: "Sopa", qtd: 2 },
     { alimento: "Estrogonofre", qtd: 2 },
     { alimento: "Peixe Frito", qtd: 1 },
@@ -72,6 +74,7 @@ do {
     dinheiro: 50,
 
     modificarSaude: function (b, a) {
+
       if (b == 1) {
         this.saude = this.saude + a;
 
@@ -124,7 +127,9 @@ do {
     },
 
     modificarFome: function (b, a) {
+      
       if (b == 1) {
+
         this.fome = this.fome + a;
 
         console.log();
@@ -168,6 +173,7 @@ do {
     },
 
     modificarDinheiro: function (b, a) {
+
       if (b == 1) {
         this.dinheiro = this.dinheiro + a;
 
@@ -207,7 +213,9 @@ do {
   //FUNÇÕES SECUNDÁRIAS
 
   function receberItem(a) {
+
     let num = Math.floor(Math.random() * a);
+
     let numitem = Math.floor(Math.random() * inventario.length);
 
     if (num < 2) {
@@ -272,7 +280,8 @@ do {
   };
 
   function verificarNumero(rp) {
-    while (rp != 1 && rp != 2 && rp != 3 && rp != 4) {
+
+    while (rp != 1 && rp != 2 && rp != 3 && rp != 4 || isNaN(rp)) {
       console.log("Número inválido, Digite um número inteiro de 1 a 4");
 
       console.log();
@@ -311,13 +320,13 @@ do {
 
     console.log();
 
-    let cm = +prompt("Digite o número de sua refeição: ");
+    let rp = +prompt("Digite o número de sua refeição: ");
 
     console.log();
 
-    verificarNumero(cm);
+    verificarNumero(rp);
 
-    if (cm == 1 && inventario[0].qtd > 0) {
+    if (rp == 1 && inventario[0].qtd > 0) {
       console.log(
         "Você comeu uma sopa, ela estava um pouco fria mas não é de se reclamar."
       );
@@ -325,22 +334,22 @@ do {
       status.modificarFome(2, 10);
       status.modificarSaude(1, 3);
       tempo.passarTempo(1);
-    } else if (cm == 2 && inventario[1].qtd > 0) {
+    } else if (rp == 2 && inventario[1].qtd > 0) {
       console.log("Você fez um belo estrogonofre de frango."),
         (inventario[1].qtd -= 1);
       status.modificarFome(2, 20);
       status.modificarSaude(1, 4);
       tempo.passarTempo(2);
-    } else if (cm == 3 && inventario[2].qtd > 0) {
+    } else if (rp == 3 && inventario[2].qtd > 0) {
       console.log("Você comeu um magnífico peixe frito."),
         (inventario[2].qtd -= 1);
       status.modificarFome(2, 30);
       tempo.passarTempo(3);
       status.modificarSaude(1, 5);
-    } else if (cm == 4) {
+    } else if (rp == 4) {
       console.log("Você voltou a página principal");
-    } else {
-      console.log(`Você não tem mais ${inventario[cm - 1].alimento}`);
+    } else if (inventario[rp - 1].qtd < 1) {
+      console.log(`Você não tem mais ${inventario[rp - 1].alimento}`);
     };
 
     console.log();
@@ -589,6 +598,14 @@ do {
       "Erich Max Robert Abraham",
       "Rudolf Abrahamczik",
       "Herbert Abratis",
+      'Akira Makino',
+      'Masao Maruyama',
+      'Masao Baba',
+      'Masatomi Kimura',
+      'Matsudaira Morio',
+      'Iwane Matsui',
+      'Gunichi Mikawa',
+      'Mineichi Kōga'
     ];
 
     let numprisioneiros = Math.floor(Math.random() * prisioneiros.length);
@@ -780,7 +797,7 @@ Agora está na hora de dar tudo de mim mesma na luta pela sobrevivência...
 
 Esses são seus objetivos: 
 
--- Sobreviver por 15 dias a Guerra e fome
+-- Sobreviver por 10 dias a Guerra e a fome
 -- Cuidar dos pacientes 
 -- Tentar cuidar dos prisioneiros
 -- Manter sua Moral alta
@@ -875,6 +892,7 @@ Escolha sua ação:
     
     Você perdeu mas não desista, tente novamente. Glória a União Soviética!!
     `);
+
   } else if (status.fome >= 100) {
     console.log();
     console.log(`Dia ${tempo.dia} de ${tempo.mes + 1} de ${
@@ -883,7 +901,7 @@ Escolha sua ação:
   
   Você perdeu mas não desista, tente novamente. Glória a União Soviética!!
   `);
-  } else if (status.fome >= 100) {
+  } else if (status.moral >= 100) {
     console.log();
     console.log(`Dia ${tempo.dia} de ${tempo.mes + 1} de ${
       tempo.ano
