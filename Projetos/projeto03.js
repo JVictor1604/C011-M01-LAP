@@ -795,7 +795,7 @@ Esses são seus objetivos:
 
   console.log();
 
-  jogo: for (let i = 0; i < 3; i++) {
+  jogo: for (let i = 0; i < 10; i++) {
 
     console.log(`Dia ${tempo.dia} de ${tempo.mes} de ${tempo.ano}.....`);
 
