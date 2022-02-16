@@ -39,8 +39,8 @@ do {
 
   let inventario = [
     { alimento: "Sopa", qtd: 2 },
-    { alimento: "Estrogonofre", qtd: 3 },
-    { alimento: "Peixe Frito", qtd: 2 },
+    { alimento: "Estrogonofre", qtd: 2 },
+    { alimento: "Peixe Frito", qtd: 1 },
     { remedio: "Analgésico", qtd: 1 },
     { remedio: "Antídoto", qtd: 1 },
     { remedio: "Vacina", qtd: 1 },
