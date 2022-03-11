@@ -1,3 +1,32 @@
-html{
-    background-color: rgb(95, 107, 107) ;
+*   {margin: 0;
+	 padding: 0;
+	 border: 0;}
+
+header {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C7040A;
+    height: 15vh;
+}
+
+
+h1,h4 {
+    color: rgb(255, 255, 255);
+}
+
+main{
+    background-color: #f3d0d1;
+    height: 80vh;
+}
+
+img{
+
+    align-content: center;
+}
+
+footer {
+    background-color: #782629;
+    height: 5vh;
 }
