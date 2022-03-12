@@ -17,7 +17,6 @@
 #texto-inicial{
 
     
-    
     margin-top: 12rem;
     flex-direction: column;
     font-family: 'Merriweather', serif;
@@ -54,5 +53,20 @@
     color: white;
     background-color: #6C63FF;
     border-radius: 2rem;
+    
+}
+
+.blocos {
+
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blocos img{
+
+    
+    height: 200px;
+   
     
 }

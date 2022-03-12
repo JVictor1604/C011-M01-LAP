@@ -1,3 +1,13 @@
-let h1 = document.getElementById('texto-inicial')
+let text = document.querySelector("#texto-inicial")
 
-console.log(h1);
+
+function handleEvent() {
+
+    if (text.style.color != 'red') {
+
+        text.style.color = 'red'
+    }   else {
+
+        text.style.color = 'black'
+    }
+}
