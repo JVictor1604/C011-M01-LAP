@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.head{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #D7D4FF;
+    width: 100%;
+    height: 40vh;
+}
+
+#texto-inicial{
+
+    
+    
+    margin-top: 12rem;
+    flex-direction: column;
+    font-family: 'Merriweather', serif;
+    
+}
+
+#foto-direita img{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 14rem;
+    width: auto;
+    
+    
+}
+
+
+.button{
+    
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 11rem;
+    align-items: flex-start;
+    font-family: 'Merriweather', serif;
+}
+
+.button input{
+
+    height: 40px;
+    width: 200px;
+    color: white;
+    background-color: #6C63FF;
+    border-radius: 2rem;
+    
+}
