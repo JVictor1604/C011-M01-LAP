@@ -56,17 +56,30 @@
     
 }
 
-.blocos {
+main {
 
-    background-color: aqua;
+    
     display: flex;
     justify-content: space-between;
+    align-items: space-around;
+    flex-wrap: wrap;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 5rem;
 }
 
-.blocos img{
+.blocos img {
 
-    
     height: 200px;
-   
+    width: 200px;
+    border: 3px solid #6C63FF;
+    border-radius: 1rem;
+    margin-bottom: 8rem;
     
+}
+
+.blocos {
+
+    display: flex;
+    justify-content: space-between;
 }
