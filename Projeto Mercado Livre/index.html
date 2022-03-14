@@ -7,11 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de humor do Klopão</title>
     <link rel="stylesheet" href="./styles/styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     
+    <audio
+
+    id="hino" 
+    src="assents/video/videoplayback.mp4"
+    type="audio">
+    
+    </audio>
+
     <header>
 
             <img 
@@ -31,54 +42,41 @@
 
                     
 
-        <div id="klopphumor">
+        <div class="klopphumor">
 
-            <div class="kloppfeliz">
+            <div>
                 
-                <h2> Feliz</h2>
+                <h2 
+                id = 'texto'> Poolzão Ganhou mais uma </h2>
 
                 <img 
-                    
+                
+                    id = "foto"
                     alt="Imagem do Klopp feliz"
                     src="assents/img/kloppfeliz.png" 
                             >
 
-            </div>
+        </div>
 
-            <div class="klopptriste">
-                    
-                    <h2> Triste</h2>
 
-                    <img 
-                    
-                    alt="Imagem do Klopp triste"
-                    src="assents/img/22746-klopp-triste.jpg" 
-                    >
+            
 
-            </div>
+            <button 
+            id="button"
+            onclick="mudarHumor()"
+            ondblclick="mudarMusica()"
+            > 
+            
+            <p>
 
-            <div class="kloppindiferente">
-                    
-                    <h2> Indiferente</h2>
+                <b>Mude de humor </b> 
+            
+            </p> 
+            
+            </button>
+            
 
-                    <img 
-
-                    alt="Imagem do Klopp Indiferente"
-                    src="assents/img/1024.jpg" 
-                    >
-
-            </div>
-
-            <div class="button">
-
-                <input 
-                type="button"
-                value="Mude de humor"
-                >
-
-            </div>
-
-                
+            
 
         </div>
 
@@ -94,6 +92,10 @@
                 </div>
 
             </footer>
+
+
+   <script src="js/html.js"></script>  
+
 
 </body>
 
