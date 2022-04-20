@@ -27,12 +27,14 @@ function mudarHumor() {
 
         h2.innerHTML = textos[0];
         img.src = imagens[0];
+        img.alt = "imagem do Klopp triste";
         contador++;
 
     }   else if (contador == 1) {
 
         h2.innerHTML = textos[1];
         img.src = imagens[1];
+        img.alt = "imagem do Klopp feliz";
         contador++;
     }  
         else if (contador == 2) {
@@ -40,6 +42,7 @@ function mudarHumor() {
         h2.innerHTML = textos[2];
         img.src = imagens[2];
         contador= 0;
+        img.alt = "imagem do Klopp indiferente"
     };
    
 };
